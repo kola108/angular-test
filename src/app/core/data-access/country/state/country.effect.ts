@@ -17,8 +17,6 @@ export class CountryEffects {
 
   getBackEndCountries$ = createEffect(() => this.actions$.pipe(
     ofType(CountryActions.getBackEndCountries),
-    tap(() => {
-      console.log('Fetching countries from backend')}),
     exhaustMap(() => this.apiService.getCountryList().pipe(
       map((response: GetCountryListResponse) => CountryActions.loadCountriesSuccess({ countries: response.countries })),
       catchError((error: Error) => of(CountryActions.loadCountriesFailure({ error: error.message })))
