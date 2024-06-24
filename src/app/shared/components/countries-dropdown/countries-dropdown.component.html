@@ -1,0 +1,23 @@
+<div [formGroup]="formGroup" *ngIf="formGroup">
+  <label for="countriesInput" class="form-label">Country</label>
+  <input
+    type="text"
+    class="form-control"
+    id="countriesInput"
+    [formControl]="formControl"
+    [appTooltip]="tooltipText"
+  >
+  <div
+    id="countriesDropdown"
+    class="d-inline-block"
+    ngbDropdown
+    #countryDropdown="ngbDropdown"
+    *ngIf="filteredCountries?.length"
+  >
+    <div ngbDropdownMenu aria-labelledby="dropdownManual">
+      <ng-container *ngFor="let country of filteredCountries">
+        <button ngbDropdownItem (click)="onCountrySelect(country)">{{country}}</button>
+      </ng-container>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="submit-buttons">
+  <button
+    type="submit"
+    class="btn btn-primary mb-4 submit-button"
+    [disabled]="submitDisabled"
+    *ngIf="!isFormSubmitting"
+    (click)="onSubmit()"
+  >Submit all forms</button>
+  <div class="submit-cancel mb-4 d-flex align-items-center" *ngIf="isFormSubmitting">
+    <button
+      type="submit"
+      class="btn btn-danger submit-button my-0"
+      (click)="onCancel()"
+    >Cancel</button>
+    <div class="mx-2 my-0 remind-time">{{remainingTime | time}}</div>
+  </div>
+</div>

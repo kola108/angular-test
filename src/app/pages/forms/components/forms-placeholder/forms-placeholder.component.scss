@@ -1,0 +1,18 @@
+.form-placeholder {
+  cursor: pointer;
+  border: 1px dotted black;
+  background: rgb(196,196,201);
+  background: linear-gradient(90deg, rgba(196,196,201,1) 0%, rgba(255,255,255,0.6839985994397759) 85%);
+
+  .card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .icon-plus {
+    font-size: 40px;
+    color: cornflowerblue;
+    cursor: pointer;
+  }
+}

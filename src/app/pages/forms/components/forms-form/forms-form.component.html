@@ -1,0 +1,48 @@
+<div class="row" [formGroup]="formGroup">
+  <ng-container formArrayName="forms">
+    <div
+      class="card app-card"
+      *ngFor="let form of formsArray.controls; let i = index"
+    >
+      <div class="card-header">
+        <i class="bi-x-lg" (click)="removeForm(i)"></i>
+      </div>
+      <dix class="card-body" [formGroup]="form" *ngIf="form">
+        <div class="mb-3">
+          <app-countries-dropdown
+            [control]="getCountryControl(form)"
+            [countries]="countries"
+            [tooltipText]="'please enter the country from the list'"
+          ></app-countries-dropdown>
+        </div>
+        <div class="mb-3">
+          <label for="userName" class="form-label">User Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="userName"
+            formControlName="userName"
+            [appTooltip]="'please enter the user name with new'"
+          >
+        </div>
+        <div class="mb-3">
+          <label for="birthday">Birthday</label>
+          <div class="input-group">
+            <input
+              id="birthday"
+              class="form-control"
+              placeholder="yyyy-mm-dd"
+              name="dp"
+              ngbDatepicker
+              #datepicker="ngbDatepicker"
+              formControlName="birthday"
+              [appTooltip]="'please enter the birthday before / or today'"
+            />
+            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="datepicker.toggle()" type="button"></button>
+          </div>
+        </div>
+      </dix>
+    </div>
+  </ng-container>
+  <ng-content></ng-content>
+</div>

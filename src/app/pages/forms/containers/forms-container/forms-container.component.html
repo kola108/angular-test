@@ -1,0 +1,20 @@
+<div class="container">
+  <app-forms-header
+    [submitDisabled]="(isFormInvalid$ | async)!"
+    [remainingTime]="(remainingTime$.asObservable() | async)!"
+    [isFormSubmitting]="(isFormSubmitting$.asObservable() | async)!"
+    (submitEvent)="onSubmit()"
+    (cancelEvent)="onCancel()"
+  ></app-forms-header>
+  <app-forms-form
+    [formGroup]="formGroup"
+    [formsArray]="formsArray"
+    [countries]="(countries$ | async)!"
+    (removeFormEvent)="removeForm($event)"
+  >
+    <app-forms-placeholder
+      [isFormAddAvailable]="(isFormAddAvailable() | async)!"
+      (addFormEvent)="addForm()"
+    ></app-forms-placeholder>
+  </app-forms-form>
+</div>
